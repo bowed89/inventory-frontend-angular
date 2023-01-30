@@ -82,6 +82,13 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  buscar(termino: string) {
+    termino.length === 0 ? this.getCategories()
+      : this._categoryService.getCategoryById(termino).subscribe(data => {
+        this.processCategoriesResponse(data);
+      });
+  }
+
   openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 2000

@@ -24,7 +24,12 @@ export class CategoryService {
   saveCategory(body: CategoryElement) {
     const endpoint = `${BASE_URL}/categories`;
     return this.http.post(endpoint, body);
+  }
 
+  // Actualizar Categorias
+  updateCategory(body: CategoryElement, id: any) {
+    const endpoint = `${BASE_URL}/categories/${id}`;
+    return this.http.put(endpoint, body);
   }
 
 }

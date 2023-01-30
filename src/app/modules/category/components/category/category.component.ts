@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/modules/shared/services/category.servic
 import { CategoryElement } from '../../../shared/interfaces/category.interface';
 import { NewCategoryComponent } from '../new-category/new-category.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-category',
@@ -66,6 +67,18 @@ export class CategoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: number) => {
       result === 1 ? (this.openSnackBar('Categoría Actualizada', "Exitosa"), this.getCategories())
         : result === 2 && this.openSnackBar('Se produjo un error al actualizar categoría', "Error")
+    });
+  }
+
+  delete(id: number) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '200px',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe((result: number) => {
+      result === 1 ? (this.openSnackBar('Categoría Eliminada', "Exitosa"), this.getCategories())
+        : result === 2 && this.openSnackBar('Se produjo un error al eliminar la categoría', "Error")
     });
   }
 

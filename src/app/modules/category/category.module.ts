@@ -5,10 +5,12 @@ import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { NewCategoryComponent } from './components/new-category/new-category.component';
 
 @NgModule({
   declarations: [
-    CategoryComponent
+    CategoryComponent,
+    NewCategoryComponent
   ],
   imports: [
     CommonModule,

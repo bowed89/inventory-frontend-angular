@@ -50,4 +50,10 @@ export class CategoryService {
     return this.http.delete(endpoint);
   }
 
+   // Buscar Categoria por ID
+   getCategoryById(id: any) {    
+    const endpoint = `${BASE_URL}/categories/${id}`;
+    return this.http.get(endpoint);
+  }
+
 }

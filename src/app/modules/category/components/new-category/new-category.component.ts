@@ -26,8 +26,6 @@ export class NewCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dataUpdate);
-
     // Verificar si existe valor en 'datas' para llamar al metodo para actualizar
     this.dataUpdate != null ? (
       this.updateForm(this.dataUpdate),
@@ -39,7 +37,7 @@ export class NewCategoryComponent implements OnInit {
     let data: CategoryElement = {
       name: this.categoryForm.get('name')?.value,
       description: this.categoryForm.get('description')?.value
-    }
+    };
 
     // Verificar si dataUpdate tiene dato para actualizar, sino almacenar nueva categoria
     this.dataUpdate !== null ? (

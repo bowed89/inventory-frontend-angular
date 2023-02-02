@@ -20,4 +20,10 @@ export class ProductService {
     return this.http.get(endpoint);
   }
 
+  // Guardar producto
+  saveProduct(body: any) {
+    const endpoint = `${BASE_ULR}/products`;
+    return this.http.post(endpoint, body);
+  }
+
 }

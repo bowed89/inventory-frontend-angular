@@ -94,4 +94,12 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  buscar(nombre: any) {
+    nombre.length === 0 ? this.getProducts()
+      : this._productServices.getProductByName(nombre).subscribe((data: any) => {
+        this.processProductResponse(data);
+      })
+
+  }
+
 }

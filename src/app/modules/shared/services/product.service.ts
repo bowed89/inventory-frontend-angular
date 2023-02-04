@@ -37,4 +37,11 @@ export class ProductService {
     const endpoint = `${BASE_ULR}/products/${id.id}`;
     return this.http.delete(endpoint);
   }
+
+  // Buscar producto por nombre
+  getProductByName(name: any) {
+    const endpoint = `${BASE_ULR}/products/filter/${name}`;
+    return this.http.get(endpoint);
+
+  }
 }

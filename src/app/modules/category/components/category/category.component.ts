@@ -49,7 +49,7 @@ export class CategoryComponent implements OnInit {
       listCategory = categoryResponse.category,
       listCategory.map((element: CategoryElement) => dataCategory = [...dataCategory, element]),
       this.dataSource = new MatTableDataSource<CategoryElement>(dataCategory));
-      this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
   openCategoryDialog() {
@@ -78,7 +78,7 @@ export class CategoryComponent implements OnInit {
   delete(id: number) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '200px',
-      data: { id }
+      data: { id, module: "category" }
     });
 
     dialogRef.afterClosed().subscribe((result: number) => {

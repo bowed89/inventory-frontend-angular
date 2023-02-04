@@ -35,9 +35,13 @@
                     (change)="onFileChange($event)"
                     type="file"
                     class="input-file"
-                    formControlName="picture" />
-
-                <span>{{ nameImg }}</span>
+                   
+                    [(ngModel)]="imgUpload"
+                    [ngModelOptions]="{standalone: true}"
+                    />
+                <div class="show-img" *ngIf="showImg">
+                    <img [src]="showImg" height="100" width="100">
+                </div>
             </div>
 
         </div>

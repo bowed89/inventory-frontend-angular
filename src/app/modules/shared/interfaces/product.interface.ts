@@ -4,6 +4,5 @@ export interface ProductElement {
     price: any;
     account: any;
     category: any;
-    picture: any;
-    categoryId?: any;
+    picture?: any;
 }

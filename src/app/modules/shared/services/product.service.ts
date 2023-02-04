@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ProductElement } from '../../shared/interfaces/product.interface';
@@ -21,9 +21,20 @@ export class ProductService {
   }
 
   // Guardar producto
-  saveProduct(body: any) {
+  saveProduct(body: FormData) {
     const endpoint = `${BASE_ULR}/products`;
     return this.http.post(endpoint, body);
   }
 
+  // Modificar producto
+  updateProduct(body: FormData, id: any) {
+    const endpoint = `${BASE_ULR}/products/${id}`;
+    return this.http.put(endpoint, body);
+  }
+
+  // Eliminar producto
+  deleteProduct(id: any) {
+    const endpoint = `${BASE_ULR}/products/${id.id}`;
+    return this.http.delete(endpoint);
+  }
 }

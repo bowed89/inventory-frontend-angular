@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductElement } from '../../shared/interfaces/product.interface';
 import { ProductService } from '../../shared/services/product.service';
+import { UtilService } from '../../shared/services/util.service';
 
 
 @Component({
@@ -13,15 +14,18 @@ import { ProductService } from '../../shared/services/product.service';
 export class ProductComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'price', 'account', 'category', 'picture', 'actions'];
   dataSource = new MatTableDataSource<ProductElement>();
+  isAdmin: Boolean = false;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   constructor(
     private _productServices: ProductService,
+    private _util: UtilService
   ) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.isAdmin = this._util.isAdmin();
   }
 
   getProducts() {

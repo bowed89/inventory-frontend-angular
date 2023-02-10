@@ -4,7 +4,7 @@
         <div>
             <mat-form-field hintLabel="Busqueda Productos" appearance="fill">
                 <mat-label>Buscar Productos</mat-label>
-                <input matInput #input>
+                <input matInput #input (keyup)="buscar(input.value)">
             </mat-form-field>
         </div>
     </mat-card-header>
@@ -13,7 +13,7 @@
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
                 <li>
-                    <button mat-raised-button color="primary">Agregar Producto</button>
+                    <button mat-raised-button color="primary" (click)="openProductDialog()">Agregar Producto</button>
                 </li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
             <!-- category columna -->
             <ng-container matColumnDef="category">
                 <th mat-header-cell *matHeaderCellDef>Categoría</th>
-                <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.category.name }}</td>
             </ng-container>
 
             <!-- picture columna -->
@@ -66,10 +66,10 @@
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let element; let i=index;">
                     <button *ngIf="isAdmin" mat-icon-button color="accent">
-                        <mat-icon aria-label="Edit">edit</mat-icon>
+                        <mat-icon aria-label="Edit" (click)="edit(element)">edit</mat-icon>
                     </button>
                     <button *ngIf="isAdmin" mat-icon-button color="accent">
-                        <mat-icon aria-label="Delete">delete</mat-icon>
+                        <mat-icon aria-label="Delete" (click)="delete(element.id)">delete</mat-icon>
                     </button>
                 </td>
             </ng-container>

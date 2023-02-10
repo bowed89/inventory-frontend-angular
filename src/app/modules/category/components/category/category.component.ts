@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CategoryService } from 'src/app/modules/shared/services/category.service';
 
 import { CategoryElement } from '../../../shared/interfaces/category.interface';
@@ -53,7 +53,7 @@ export class CategoryComponent implements OnInit {
       listCategory = categoryResponse.category,
       listCategory.map((element: CategoryElement) => dataCategory = [...dataCategory, element]),
       this.dataSource = new MatTableDataSource<CategoryElement>(dataCategory));
-      this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
   openCategoryDialog() {
@@ -82,7 +82,7 @@ export class CategoryComponent implements OnInit {
   delete(id: number) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '200px',
-      data: { id }
+      data: { id, module: "category" }
     });
 
     dialogRef.afterClosed().subscribe((result: number) => {

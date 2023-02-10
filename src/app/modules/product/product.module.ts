@@ -5,12 +5,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { ProductComponent } from './product/product.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    NewProductComponent
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
 export interface ProductElement {
     id?: number;
     name: string;
-    price: number;
-    account: number;
+    price: any;
+    account: any;
     category: any;
-    picture: any;
+    picture?: any;
 }

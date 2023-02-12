@@ -42,6 +42,12 @@ export class ProductService {
   getProductByName(name: any) {
     const endpoint = `${BASE_ULR}/products/filter/${name}`;
     return this.http.get(endpoint);
-
   }
+
+  // Obtener todas las categorias
+  exportProducts() {
+    const endpoint = `${BASE_ULR}/products/export/excel`;
+    return this.http.get(endpoint, { responseType: 'blob' });
+  }
+
 }

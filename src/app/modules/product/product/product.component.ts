@@ -99,6 +99,24 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  exportExcel() {
+    this._productServices.exportProducts().subscribe(res => {
+      let file = new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      let fileUrl = URL.createObjectURL(file);
+      let anchor = document.createElement("a");
+      anchor.download = "products.xlsx";
+      anchor.href = fileUrl;
+      anchor.click();
+
+      this.openSnackBar("Archivo exportado correctamente", "Exito");
+
+    }, (error) => {
+      console.log(error);
+      this.openSnackBar("No se pudo exportar el archivo", "Error");
+
+    });
+  }
+
   buscar(nombre: any) {
     nombre.length === 0 ? this.getProducts()
       : this._productServices.getProductByName(nombre).subscribe((data: any) => {

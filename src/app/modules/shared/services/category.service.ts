@@ -14,7 +14,7 @@ const options = {
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     'key': 'x-api-key',
     'value': 'NNctr6Tjrw9794gFXf3fi6zWBZ78j6Gv3UCb3y0x',
-  })  
+  })
 };
 
 @Injectable({
@@ -45,15 +45,21 @@ export class CategoryService {
   }
 
   // Eliminar Categorias
-  deleteCategory(id: any) {    
+  deleteCategory(id: any) {
     const endpoint = `${BASE_URL}/categories/${id.id}`;
     return this.http.delete(endpoint);
   }
 
-   // Buscar Categoria por ID
-   getCategoryById(id: any) {    
+  // Buscar Categoria por ID
+  getCategoryById(id: any) {
     const endpoint = `${BASE_URL}/categories/${id}`;
     return this.http.get(endpoint);
+  }
+
+  // Obtener todas las categorias
+  exportCategories() {
+    const endpoint = `${BASE_URL}/categories/export/excel`;
+    return this.http.get(endpoint, { responseType: 'blob' });
   }
 
 }
